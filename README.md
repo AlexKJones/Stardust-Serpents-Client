@@ -1,6 +1,6 @@
 [![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
-# react-auth-template
+# stardust-serpents
 
 A front-end framework template for starting projects with a recent version of
 either the [Rails API Template](https://git.generalassemb.ly/ga-wdi-boston/rails-api-template)
@@ -9,10 +9,10 @@ or the [Express API Template](https://git.generalassemb.ly/ga-wdi-boston/express
 ## Installation
 
 1. [Download](../../archive/master.zip) this template.
-1. Unzip and rename the template directory (`unzip ~/Downloads/react-auth-template-master.zip`).
+1. Unzip and rename the template directory (`unzip ~/Downloads/stardust-serpents-master.zip`).
 1. Move into the new project and `git init`.
 1. Empty [`README.md`](README.md) and fill with your own content.
-1. Replace `react-auth-template` in `package.json` with your
+1. Replace `stardust-serpents` in `package.json` with your
    projects name.
 1. Replace the `"homepage"` field in `package.json` with your (public) Github
    account name and repository name.
