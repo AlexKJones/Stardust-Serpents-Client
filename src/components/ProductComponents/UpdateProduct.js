@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import { updateProduct, viewProduct } from '../../api/auth'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
 const ProductUpdate = (props) => {
   const [product, setProduct] = useState({ title: '', starring: '', director: '', description: '', released: '' })
   const [updated, setUpdated] = useState(false)
   const { msgAlert } = props
+
   useEffect(() => {
     viewProduct(props.user, props.match.params.productId)
       .then(res => setProduct(res.data.product))
@@ -46,47 +49,53 @@ const ProductUpdate = (props) => {
     return <Redirect to={`/products/${props.match.params.productId}`} />
   }
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Title</label>
-      <input
-        placeholder="A Wonderful Movie"
-        value={product.title}
-        name="title"
-        onChange={handleChange}
-      />
-      <label>Starring</label>
-      <input
-        placeholder="John Doe"
-        value={product.starring}
-        name="starring"
-        onChange={handleChange}
-      />
-      <label>Director</label>
-      <input
-        placeholder="John Doe"
-        value={product.director}
-        name="director"
-        onChange={handleChange}
-      />
-      <label>Description</label>
-      <input
-        placeholder="John Doe"
-        value={product.description}
-        name="description"
-        onChange={handleChange}
-      />
-      <label>Released</label>
-      <input
-        placeholder="John Doe"
-        value={product.released}
-        name="released"
-        onChange={handleChange}
-      />
-      <button type="submit">Submit</button>
-      <Link to={'update-product/'}>
-        <button>Cancel</button>
-      </Link>
-    </form>
+    <div className="row">
+      <div className="col-sm-10 col-md-8 mx-auto mt-5">
+        <h3>Create Product</h3>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group controlId="genes">
+            <Form.Label>Genes</Form.Label>
+            <Form.Control
+              placeholder="Female Super Banana Panda"
+              value={product.genes}
+              name="genes"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="price">
+            <Form.Label>Price</Form.Label>
+            <Form.Control
+              placeholder="2,000.00"
+              value={product.price}
+              name="price"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="age">
+            <Form.Label>Age</Form.Label>
+            <Form.Control
+              placeholder="born in may 2020"
+              value={product.director}
+              name="age"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="description">
+            <Form.Label>Description</Form.Label>
+            <Form.Control
+              placeholder="any notes"
+              value={product.description}
+              name="description"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Button type="submit">Submit</Button>
+          <Link to={'/products'}>
+            <Button>Cancel</Button>
+          </Link>
+        </Form>
+      </div>
+    </div>
   )
 }
 

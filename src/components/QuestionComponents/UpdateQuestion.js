@@ -1,17 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Redirect, Link } from 'react-router-dom'
-import { updateQuestion } from '../../api/auth'
+import { updateQuestion, viewQuestion, deleteQuestion } from '../../api/auth'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
 const QuestionUpdate = (props) => {
-  const [question, setQuestion] = useState({ title: '', body: '', rating: '' })
+  const productId = props.match.params.productId
+  const [question, setQuestion] = useState({ title: '', body: '', product: productId })
   const [updated, setUpdated] = useState(false)
-  const { msgAlert } = props
+  const { msgAlert, user, match } = props
 
-  // useEffect(() => {
-  //   viewQuestion(props.user, props.match.params.questionId)
-  //     .then(res => setQuestion(res.data.question))
-  //     .catch(console.error)
-  // }, [])
+  useEffect(() => {
+    viewQuestion(props.user, props.match.params.questionId)
+      .then(res => setQuestion(res.data.question))
+      .catch(console.error)
+  }, [])
 
   const handleChange = event => {
     event.persist()
@@ -44,37 +47,60 @@ const QuestionUpdate = (props) => {
   }
 
   if (updated) {
-    return <Redirect to={`/questions/${props.match.params.questionId}`} />
+    return <Redirect to={'/products/'} />
+  }
+
+  const handleQDelete = (props) => {
+    deleteQuestion(user, match.params.questionId)
+      .then(() => {
+        msgAlert({
+          heading: 'Question Deleted',
+          message: 'Back to products',
+          variant: 'success'
+        })
+      })
+      .then(() => history.push('/questions'))
+      .then(<Redirect to={'/products/'} />)
+      .catch(err => {
+        msgAlert({
+          heading: 'Deletion Failed',
+          message: 'Something went wrong: ' + err.message,
+          variant: 'danger'
+        })
+      })
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Title</label>
-      <input
-        placeholder="A Wonderful Movie"
-        value={question.title}
-        name="title"
-        onChange={handleChange}
-      />
-      <label>body</label>
-      <input
-        placeholder="Wow so good"
-        value={question.description}
-        name="body"
-        onChange={handleChange}
-      />
-      <label>Rating</label>
-      <input
-        placeholder="10"
-        value={question.released}
-        name="rating"
-        onChange={handleChange}
-      />
-      <button type="submit">Submit</button>
-      <Link to={'update-question/'}>
-        <button>Cancel</button>
-      </Link>
-    </form>
+    <div className="row">
+      <div className="col-sm-10 col-md-8 mx-auto mt-5">
+        <h3>Update Question</h3>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group controlId="title">
+            <Form.Label>Title</Form.Label>
+            <Form.Control
+              placeholder="How is the temperment?"
+              value={question.title}
+              name="title"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="body">
+            <Form.Label>Body</Form.Label>
+            <Form.Control
+              placeholder="Would we be good as a pet?"
+              value={question.body}
+              name="body"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Button type="submit">Submit</Button>
+          <Link to={'/products'}>
+            <button>Cancel</button>
+          </Link>
+          {user._id === question.owner ? <button onClick={handleQDelete}>Delete Question</button> : '' }
+        </Form>
+      </div>
+    </div>
   )
 }
 

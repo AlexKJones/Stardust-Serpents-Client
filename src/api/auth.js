@@ -100,6 +100,16 @@ export const deleteQuestion = (user, id) => {
   })
 }
 
+export const viewQuestion = (user, id) => {
+  return axios({
+    url: apiUrl + '/questions/' + id,
+    headers: {
+      Authorization: 'Bearer ' + user.token
+    },
+    method: 'GET'
+  })
+}
+
 // // <---- Product Crud Zone ----->
 // // <--------------------------->
 // // <--------------------------->

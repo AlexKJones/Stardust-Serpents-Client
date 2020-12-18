@@ -6,8 +6,8 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 const QuestionCreate = props => {
-  const showId = props.match.params.showId
-  const [question, setQuestion] = useState({ title: '', body: '', rating: '', show: showId })
+  const productId = props.match.params.productId
+  const [question, setQuestion] = useState({ title: '', body: '', product: productId })
   const [createdQuestionId, setCreatedQuestionId] = useState(null)
   const { msgAlert } = props
   const handleChange = event => {
@@ -31,14 +31,14 @@ const QuestionCreate = props => {
       .then(res => setCreatedQuestionId(res.data.question._id))
       .then(() => {
         msgAlert({
-          heading: 'Create Question Success',
+          heading: 'Ask Question Success',
           message: 'Nice Job!',
           variant: 'success'
         })
       })
       .catch(err => {
         msgAlert({
-          heading: 'Create Question Failed :(',
+          heading: 'Ask Question Failed :(',
           message: 'Error code: ' + err.message,
           variant: 'danger'
         })
@@ -57,7 +57,7 @@ const QuestionCreate = props => {
           <Form.Group controlId="title">
             <Form.Label>Title</Form.Label>
             <Form.Control
-              placeholder="Show was Great!"
+              placeholder="How is the temperment?"
               value={question.title}
               name="title"
               onChange={handleChange}
@@ -66,23 +66,14 @@ const QuestionCreate = props => {
           <Form.Group controlId="body">
             <Form.Label>Body</Form.Label>
             <Form.Control
-              placeholder="Loved the fight scene"
+              placeholder="Would we be good as a pet?"
               value={question.body}
               name="body"
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group controlId="rating">
-            <Form.Label>Rating</Form.Label>
-            <Form.Control
-              placeholder="10"
-              value={question.rating}
-              name="rating"
-              onChange={handleChange}
-            />
-          </Form.Group>
           <Button type="submit">Submit</Button>
-          <Link to={'/'}>
+          <Link to={'/products'}>
             <button>Cancel</button>
           </Link>
         </Form>

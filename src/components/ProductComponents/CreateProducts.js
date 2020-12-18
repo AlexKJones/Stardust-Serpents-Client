@@ -56,7 +56,7 @@ const ProductCreate = props => {
           <Form.Group controlId="genes">
             <Form.Label>Genes</Form.Label>
             <Form.Control
-              placeholder="What is this animal!?"
+              placeholder="Female Super Banana Panda"
               value={product.genes}
               name="genes"
               onChange={handleChange}
@@ -90,7 +90,7 @@ const ProductCreate = props => {
             />
           </Form.Group>
           <Button type="submit">Submit</Button>
-          <Link to={'/'}>
+          <Link to={'/products'}>
             <Button>Cancel</Button>
           </Link>
         </Form>

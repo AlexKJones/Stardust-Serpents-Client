@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
-import { viewProduct, deleteProduct, deleteQuestion } from '../../api/auth'
+import { viewProduct, deleteProduct } from '../../api/auth'
 import Card from 'react-bootstrap/Card'
 
 const ViewProduct = (props) => {
@@ -52,25 +52,6 @@ const ViewProduct = (props) => {
       })
   }
 
-  const handleRevDelete = () => {
-    deleteQuestion(user, match.params.questionId)
-      .then(() => {
-        msgAlert({
-          heading: 'Question Deleted',
-          message: 'Back to the list of questions that exist',
-          variant: 'success'
-        })
-      })
-      .then(() => history.push('/questions'))
-      .catch(err => {
-        msgAlert({
-          heading: 'Deletion Failed',
-          message: 'Something went wrong: ' + err.message,
-          variant: 'danger'
-        })
-      })
-  }
-
   return (
     <div>
       {product && questions ? (
@@ -92,7 +73,6 @@ const ViewProduct = (props) => {
                     <Card.Title>{question.title}</Card.Title>
                     <Card.Text>{question.body}</Card.Text>
                     {user._id === question.owner ? <Link to={`/question-update/${question._id}`}>Edit Question</Link> : '' }
-                    {user._id === question.owner ? <button onClick={handleRevDelete}>Delete Question</button> : '' }
                   </Card.Body>
                 </Card>
               </div>
