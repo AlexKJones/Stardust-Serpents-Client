@@ -10,6 +10,16 @@ import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 
+// <-------- Product imports ------------->
+import CreateProduct from './components/ProductComponents/CreateProducts'
+import UpdateProduct from './components/ProductComponents/UpdateProduct'
+import ViewProduct from './components/ProductComponents/ViewProduct'
+import ViewProducts from './components/ProductComponents/ViewProducts'
+
+// <-------- Question imports ------------->
+import CreateQuestion from './components/QuestionComponents/CreateQuestion'
+import UpdateQuestion from './components/QuestionComponents/UpdateQuestion'
+
 class App extends Component {
   constructor () {
     super()
@@ -64,6 +74,48 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/question-update/:questionId' render={({ match, history }) => (
+            <UpdateQuestion
+              match={match}
+              history={history}
+              user={user}
+              msgAlert={this.msgAlert}
+            />
+          )}/>
+          <Route user={user} exact path='/products' render={() => (
+            <ViewProducts
+              user={user}
+              msgAlert={this.msgAlert}
+            />
+          )}/>
+          <AuthenticatedRoute user={user} path='/create-products' render={() => (
+            <CreateProduct
+              user={user}
+              msgAlert={this.msgAlert}
+            />
+          )}/>
+          <AuthenticatedRoute user={user} path='/products/:productId' render={({ match }) => (
+            <ViewProduct
+              user={user}
+              msgAlert={this.msgAlert}
+              match={match}
+            />
+          )}/>
+          <AuthenticatedRoute user={user} path='/product-update/:productId' render={({ match, history }) => (
+            <UpdateProduct
+              match={match}
+              history={history}
+              user={user}
+              msgAlert={this.msgAlert}
+            />
+          )}/>
+          <AuthenticatedRoute user={user} path='/create-question/:productId' render={({ match }) => (
+            <CreateQuestion
+              match={match}
+              user={user}
+              msgAlert={this.msgAlert}
+            />
           )} />
         </main>
       </Fragment>

@@ -5,5 +5,17 @@ export default {
   signInFailure: 'Failed to sign in. Check your email and password and try again.',
   signOutSuccess: 'Come back soon!',
   changePasswordSuccess: 'Password changed successfully!',
-  changePasswordFailure: 'Failed to change passwords. Check your old password and try again.'
+  changePasswordFailure: 'Failed to change passwords. Check your old password and try again.',
+  createProductSuccess: 'New Product Added',
+  createProductFailure: 'Failure Product not Added',
+  updateProductSuccess: 'Product Updated',
+  updateProductFailure: 'Update Failed',
+  deleteProductSuccess: 'Product Deleted',
+  deleteProductFailure: 'Problem Product not Deleted',
+  createQuestionSuccess: 'Question Added!',
+  createQuestionFailure: 'Issue Question not added',
+  updateQuestionSuccess: 'Question Updated',
+  updateQuestionFailure: 'Issue Question not updated',
+  deleteQuestionSuccess: 'Question Deleted',
+  deleteQuestionFailure: 'Issue Question not Deleted'
 }

@@ -6,6 +6,7 @@ const authenticatedOptions = (
   <Fragment>
     <Nav.Link href="#change-password">Change Password</Nav.Link>
     <Nav.Link href="#sign-out">Sign Out</Nav.Link>
+    <Nav.Link href="#create-products">Create Product</Nav.Link>
   </Fragment>
 )
 
@@ -19,6 +20,9 @@ const unauthenticatedOptions = (
 const alwaysOptions = (
   <Fragment>
     <Nav.Link href="#/">Home</Nav.Link>
+    <Nav.Link href="#/products">View Products</Nav.Link>
+    <Nav.Link href="#/">Animal Care</Nav.Link>
+    <Nav.Link href="#/">About Us</Nav.Link>
   </Fragment>
 )
 
