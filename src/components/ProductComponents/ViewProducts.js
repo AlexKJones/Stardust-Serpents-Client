@@ -23,6 +23,7 @@ const ViewProducts = props => {
         {productArray.map(product => (
           <div key={product._id}>
             <Card>
+              <Card.Img variant="top" src="holder.js/100px180" fluid />
               <Card.Title>{product.genes}</Card.Title>
               <Card.Text>Price: ${product.price}.00</Card.Text>
               <Card.Text>Age: {product.age}</Card.Text>

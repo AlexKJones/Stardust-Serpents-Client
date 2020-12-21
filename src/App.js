@@ -20,6 +20,10 @@ import ViewProducts from './components/ProductComponents/ViewProducts'
 import CreateQuestion from './components/QuestionComponents/CreateQuestion'
 import UpdateQuestion from './components/QuestionComponents/UpdateQuestion'
 
+// <-------- Shop imports ------------->
+// import Cart from './components/ShopComponents/Cart'
+// import Checkout from './components/ShopComponents/Checkout'
+
 class App extends Component {
   constructor () {
     super()
@@ -122,5 +126,22 @@ class App extends Component {
     )
   }
 }
+
+// <AuthenticatedRoute user={user} path='/cart/' render={({ match, history }) => (
+//   <Cart
+//     match={match}
+//     history={history}
+//     user={user}
+//     msgAlert={this.msgAlert}
+//   />
+// )}/>
+// <AuthenticatedRoute user={user} path='/checkout' render={({ match, history }) => (
+//   <Checkout
+//     match={match}
+//     history={history}
+//     user={user}
+//     msgAlert={this.msgAlert}
+//   />
+// )} />
 
 export default App
