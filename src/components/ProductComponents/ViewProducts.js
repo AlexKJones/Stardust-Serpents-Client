@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { viewProducts } from '../../api/auth'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import Spinner from 'react-bootstrap/Spinner'
 
 import StripeCheckoutButton from '../stripe-button/stripe.button'
 import CardGroup from 'react-bootstrap/CardGroup'
@@ -89,7 +90,7 @@ const ViewProducts = props => {
   const handleClose4 = () => setModalOpen4(false)
 
   if (!productArray) {
-    return ('loading...')
+    return <Spinner animation="border" variant="secondary" />
   } else {
     return (
       <div>
@@ -138,12 +139,12 @@ const ViewProducts = props => {
             <Card style={stylesEven.card} className="text-center">
               <Card.Img variant="top" src="https://i.imgur.com/hZwUJ6E.jpg" fluid />
               <Card.Title>Silver</Card.Title>
-              <Card.Text>Price: $500.00</Card.Text>
+              <Card.Text>Price: $6,500.00</Card.Text>
               <Card.Text>Age: Born May 2020</Card.Text>
               <Button variant="dark" onClick={handleShow0}>
                 More Pictures
               </Button>
-              <StripeCheckoutButton price={500.00} />
+              <StripeCheckoutButton price={6500.00} />
             </Card>
           </div>
 

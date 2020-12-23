@@ -17,7 +17,7 @@ const StripeCheckoutButton = ({ price }) => {
       name='Stardust Serpents'
       billingAddress
       shippingAddress
-      image='https://i.imgur.com/rcjlDqI.png'
+      image='https://i.imgur.com/SvfJHUo.png'
       description={`Your total is $${price}`}
       amount={priceForStripe}
       panelLabel='Buy Now'

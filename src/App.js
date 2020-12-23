@@ -20,23 +20,6 @@ import ViewProducts from './components/ProductComponents/ViewProducts'
 import CreateQuestion from './components/QuestionComponents/CreateQuestion'
 import UpdateQuestion from './components/QuestionComponents/UpdateQuestion'
 
-// <-------- Shop imports ------------->
-// import StripeCheckoutButton from './components/stripe-button/stripe.button'
-//
-// const totalPrice = 58
-
-// <div className="App">
-//   <header className="App-header">
-//     <h1>Make Stripe Payment @ Stardust Serpents</h1>
-//     <p>
-//       Pay Total of $ {totalPrice}
-//     </p>
-//     <p>
-//       <StripeCheckoutButton price={totalPrice} />
-//     </p>
-//   </header>
-// </div>
-
 class App extends Component {
   constructor () {
     super()
