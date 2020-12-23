@@ -3,6 +3,7 @@ import { withRouter, Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import { viewProduct, deleteProduct } from '../../api/auth'
 import Card from 'react-bootstrap/Card'
+import CardGroup from 'react-bootstrap/CardGroup'
 
 const ViewProduct = (props) => {
   const [product, setProduct] = useState(null)
@@ -52,12 +53,39 @@ const ViewProduct = (props) => {
       })
   }
 
+  const stylesOdd = {
+    card: {
+      backgroundColor: '#303D5B',
+      color: '#9B77CE',
+      borderRadius: 20,
+      padding: '1rem',
+      width: '18rem',
+      height: '24rem'
+    },
+    cardImage: {
+      objectFit: 'cover',
+      borderRadius: 45
+    }
+  }
+  const stylesEven = {
+    card: {
+      backgroundColor: '#553885',
+      color: '#9B77CE',
+      borderRadius: 20,
+      padding: '1rem'
+    },
+    cardImage: {
+      objectFit: 'cover',
+      borderRadius: 45
+    }
+  }
+
   return (
     <div>
       {product && questions ? (
         <div>
           <div>
-            <Card>
+            <Card style={stylesEven.card}>
               <Card.Title>{product.genes}</Card.Title>
               <Card.Text>Price: ${product.price}.00</Card.Text>
               <Card.Text>Age: {product.age}</Card.Text>
@@ -66,17 +94,19 @@ const ViewProduct = (props) => {
               <Link to={'/create-question/' + product._id}>Ask A Question</Link>
               {user._id === owner ? <Button onClick={handleDelete}>Delete This Product</Button> : '' }
             </Card>
-            {questions.map(question => (
-              <div key={question._id}>
-                <Card style={{ width: '18rem' }}>
-                  <Card.Body>
-                    <Card.Title>{question.title}</Card.Title>
-                    <Card.Text>{question.body}</Card.Text>
-                    {user._id === question.owner ? <Link to={`/question-update/${question._id}`}>Edit Question</Link> : '' }
-                  </Card.Body>
-                </Card>
-              </div>
-            ))}
+            <CardGroup>
+              {questions.map(question => (
+                <div key={question._id}>
+                  <Card style={stylesOdd.card}>
+                    <Card.Body>
+                      <Card.Title>{question.title}</Card.Title>
+                      <Card.Text>{question.body}</Card.Text>
+                      {user._id === question.owner ? <Link to={`/question-update/${question._id}`}>Edit Question</Link> : '' }
+                    </Card.Body>
+                  </Card>
+                </div>
+              ))}
+            </CardGroup>
           </div>
         </div>
       ) : 'Loading...'}
