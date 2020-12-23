@@ -21,8 +21,21 @@ import CreateQuestion from './components/QuestionComponents/CreateQuestion'
 import UpdateQuestion from './components/QuestionComponents/UpdateQuestion'
 
 // <-------- Shop imports ------------->
-// import Cart from './components/ShopComponents/Cart'
-// import Checkout from './components/ShopComponents/Checkout'
+// import StripeCheckoutButton from './components/stripe-button/stripe.button'
+//
+// const totalPrice = 58
+
+// <div className="App">
+//   <header className="App-header">
+//     <h1>Make Stripe Payment @ Stardust Serpents</h1>
+//     <p>
+//       Pay Total of $ {totalPrice}
+//     </p>
+//     <p>
+//       <StripeCheckoutButton price={totalPrice} />
+//     </p>
+//   </header>
+// </div>
 
 class App extends Component {
   constructor () {
@@ -126,22 +139,5 @@ class App extends Component {
     )
   }
 }
-
-// <AuthenticatedRoute user={user} path='/cart/' render={({ match, history }) => (
-//   <Cart
-//     match={match}
-//     history={history}
-//     user={user}
-//     msgAlert={this.msgAlert}
-//   />
-// )}/>
-// <AuthenticatedRoute user={user} path='/checkout' render={({ match, history }) => (
-//   <Checkout
-//     match={match}
-//     history={history}
-//     user={user}
-//     msgAlert={this.msgAlert}
-//   />
-// )} />
 
 export default App
