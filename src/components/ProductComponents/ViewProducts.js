@@ -40,7 +40,8 @@ const ViewProducts = props => {
       borderRadius: 20,
       padding: '1rem',
       width: '18rem',
-      height: '24rem'
+      height: '24rem',
+      margin: 10
     },
     cardImage: {
       objectFit: 'cover',
@@ -54,21 +55,8 @@ const ViewProducts = props => {
       borderRadius: 20,
       padding: '1rem',
       width: '18rem',
-      height: '24rem'
-    },
-    cardImage: {
-      objectFit: 'cover',
-      borderRadius: 45
-    }
-  }
-  const stylesHeader = {
-    card: {
-      backgroundColor: '#553885',
-      color: '#9B77CE',
-      fontSize: 30,
-      borderRadius: 20,
-      padding: '1rem',
-      width: '54rem'
+      height: '24rem',
+      margin: 10
     },
     cardImage: {
       objectFit: 'cover',
@@ -118,9 +106,6 @@ const ViewProducts = props => {
           show={modalOpen4}
           handleClose={handleClose4}
         />
-        <Card style={stylesHeader.card} className="text-center">
-          <Card.Text>Ball Pythons</Card.Text>
-        </Card>
         <CardGroup>
           <div key='Caramel Albino'>
             <Card style={stylesOdd.card} className="text-center">
