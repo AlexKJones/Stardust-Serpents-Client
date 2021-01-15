@@ -4,9 +4,11 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Tooltip from 'react-bootstrap/Tooltip'
 
 const ProductCreate = props => {
-  const [product, setProduct] = useState({ genes: '', price: '', age: '', description: '' })
+  const [product, setProduct] = useState({ genes: '', price: '', age: '', description: '', image: '', img1: '', img2: '', img3: '' })
   const [createdProductId, setCreatedProductId] = useState(null)
   const { msgAlert } = props
   const handleChange = event => {
@@ -86,6 +88,86 @@ const ProductCreate = props => {
               placeholder="any notes"
               value={product.description}
               name="description"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="image">
+            <Form.Label>Image</Form.Label>
+            <OverlayTrigger
+              overlay={<Tooltip id="tooltip-disabled">
+              Make sure you put the direct link to the image so it stores correctly - try right clicking on an image in a web browser and selecting Copy Image Address.
+              </Tooltip>}>
+              <span className="d-inline-block">
+                <Button
+                  disabled style={{ pointerEvents: 'none' }}>
+                    ?
+                </Button>
+              </span>
+            </OverlayTrigger>
+            <Form.Control
+              placeholder="Input the direct image URL here"
+              value={product.image}
+              name="image"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="img1">
+            <Form.Label>img1</Form.Label>
+            <OverlayTrigger
+              overlay={<Tooltip id="tooltip-disabled">
+              Make sure you put the direct link to the image so it stores correctly - try right clicking on an image in a web browser and selecting Copy Image Address.
+              </Tooltip>}>
+              <span className="d-inline-block">
+                <Button
+                  disabled style={{ pointerEvents: 'none' }}>
+                    ?
+                </Button>
+              </span>
+            </OverlayTrigger>
+            <Form.Control
+              placeholder="Input the direct image URL here"
+              value={product.img1}
+              name="img1"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="img2">
+            <Form.Label>img2</Form.Label>
+            <OverlayTrigger
+              overlay={<Tooltip id="tooltip-disabled">
+              Make sure you put the direct link to the image so it stores correctly - try right clicking on an image in a web browser and selecting Copy Image Address.
+              </Tooltip>}>
+              <span className="d-inline-block">
+                <Button
+                  disabled style={{ pointerEvents: 'none' }}>
+                    ?
+                </Button>
+              </span>
+            </OverlayTrigger>
+            <Form.Control
+              placeholder="Input the direct image URL here"
+              value={product.img2}
+              name="img2"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="img3">
+            <Form.Label>img3</Form.Label>
+            <OverlayTrigger
+              overlay={<Tooltip id="tooltip-disabled">
+              Make sure you put the direct link to the image so it stores correctly - try right clicking on an image in a web browser and selecting Copy Image Address.
+              </Tooltip>}>
+              <span className="d-inline-block">
+                <Button
+                  disabled style={{ pointerEvents: 'none' }}>
+                    ?
+                </Button>
+              </span>
+            </OverlayTrigger>
+            <Form.Control
+              placeholder="Input the direct image URL here"
+              value={product.img3}
+              name="img3"
               onChange={handleChange}
             />
           </Form.Group>

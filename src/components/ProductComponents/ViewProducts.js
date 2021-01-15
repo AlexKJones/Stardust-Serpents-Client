@@ -13,6 +13,7 @@ import MoreInfoModal1 from '../Modals/MoreInfoModal1'
 import MoreInfoModal2 from '../Modals/MoreInfoModal2'
 import MoreInfoModal3 from '../Modals/MoreInfoModal3'
 import MoreInfoModal4 from '../Modals/MoreInfoModal4'
+import MoreInfoModal5 from '../Modals/MoreInfoModal5'
 
 const ViewProducts = props => {
   const [productArray, setProductArray] = useState(null)
@@ -22,6 +23,8 @@ const ViewProducts = props => {
   const [modalOpen2, setModalOpen2] = useState(false)
   const [modalOpen3, setModalOpen3] = useState(false)
   const [modalOpen4, setModalOpen4] = useState(false)
+  const [modalOpen5, setModalOpen5] = useState(false)
+  const [modalProduct, setModalProduct] = useState({ title: '', img1: '', img2: '', img3: '' })
 
   const { user } = props
 
@@ -29,6 +32,9 @@ const ViewProducts = props => {
     viewProducts()
       .then(res => {
         setProductArray(res.data.products)
+      })
+      .then(res => {
+        setModalProduct(res.data.products.product.id)
       })
       .catch(console.error)
   }, [])
@@ -76,6 +82,8 @@ const ViewProducts = props => {
   const handleClose3 = () => setModalOpen3(false)
   const handleShow4 = () => setModalOpen4(true)
   const handleClose4 = () => setModalOpen4(false)
+  const handleShow5 = () => setModalOpen5(true)
+  const handleClose5 = () => setModalOpen5(false)
 
   if (!productArray) {
     return <Spinner animation="border" variant="secondary" />
@@ -105,6 +113,11 @@ const ViewProducts = props => {
         <MoreInfoModal4
           show={modalOpen4}
           handleClose={handleClose4}
+        />
+        <MoreInfoModal5
+          show={modalOpen5}
+          modalProduct={modalProduct}
+          handleClose={handleClose5}
         />
         <CardGroup>
           <div key='Caramel Albino'>
@@ -188,10 +201,14 @@ const ViewProducts = props => {
           {productArray.map(product => (
             <div key={product._id}>
               <Card style={stylesEven.card}>
-                <Card.Img variant="top" src="holder.js/100px180" fluid />
+                <Card.Img variant="top" src={product.image} fluid />
                 <Card.Title>{product.genes}</Card.Title>
                 <Card.Text>Price: ${product.price}.00</Card.Text>
                 <Card.Text>Age: {product.age}</Card.Text>
+                <Button variant="dark" onClick={() => handleShow5(product.title)}>
+                  More Pictures
+                </Button>
+                <StripeCheckoutButton price={product.price} />
                 {user ? <Link to={`/products/${product._id}`}>More Info</Link> : '' }
               </Card>
             </div>
