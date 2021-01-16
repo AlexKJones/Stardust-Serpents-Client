@@ -10,28 +10,28 @@ function MoreInfoModal5 (props) {
     <div>
       <Modal show={props.show} onHide={props.handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{props.modalProduct.title}</Modal.Title>
+          <Modal.Title>{props.modalProduct.product.genes}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Carousel>
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src={props.modalProduct.img1}
+                src={props.modalProduct.product.img1}
                 alt="First slide"
               />
             </Carousel.Item>
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src={props.modalProduct.img2}
+                src={props.modalProduct.product.img2}
                 alt="Third slide"
               />
             </Carousel.Item>
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src={props.modalProduct.img3}
+                src={props.modalProduct.product.img3}
                 alt="Third slide"
               />
             </Carousel.Item>

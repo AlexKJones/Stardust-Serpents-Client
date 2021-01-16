@@ -24,7 +24,7 @@ const ViewProducts = props => {
   const [modalOpen3, setModalOpen3] = useState(false)
   const [modalOpen4, setModalOpen4] = useState(false)
   const [modalOpen5, setModalOpen5] = useState(false)
-  const [modalProduct, setModalProduct] = useState({ title: '', img1: '', img2: '', img3: '' })
+  const [modalProduct, setModalProduct] = useState({ genes: 'foo', img1: 'foo', img2: 'foo', img3: 'foo' })
 
   const { user } = props
 
@@ -32,9 +32,6 @@ const ViewProducts = props => {
     viewProducts()
       .then(res => {
         setProductArray(res.data.products)
-      })
-      .then(res => {
-        setModalProduct(res.data.products.product.id)
       })
       .catch(console.error)
   }, [])
@@ -82,7 +79,10 @@ const ViewProducts = props => {
   const handleClose3 = () => setModalOpen3(false)
   const handleShow4 = () => setModalOpen4(true)
   const handleClose4 = () => setModalOpen4(false)
-  const handleShow5 = () => setModalOpen5(true)
+  const handleShow5 = (product) => {
+    setModalOpen5(true)
+    setModalProduct({ product: product })
+  }
   const handleClose5 = () => setModalOpen5(false)
 
   if (!productArray) {
@@ -205,7 +205,7 @@ const ViewProducts = props => {
                 <Card.Title>{product.genes}</Card.Title>
                 <Card.Text>Price: ${product.price}.00</Card.Text>
                 <Card.Text>Age: {product.age}</Card.Text>
-                <Button variant="dark" onClick={() => handleShow5(product.title)}>
+                <Button variant="dark" onClick={() => handleShow5(product)}>
                   More Pictures
                 </Button>
                 <StripeCheckoutButton price={product.price} />
