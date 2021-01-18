@@ -8,6 +8,7 @@ export const signUp = credentials => {
     data: {
       credentials: {
         email: credentials.email,
+        username: credentials.username,
         password: credentials.password,
         password_confirmation: credentials.passwordConfirmation
       }
@@ -135,9 +136,6 @@ export const createProduct = (product, user) => {
 export const viewProduct = (user, id) => {
   return axios({
     url: apiUrl + '/products/' + id,
-    headers: {
-      Authorization: 'Bearer ' + user.token
-    },
     method: 'GET'
   })
 }

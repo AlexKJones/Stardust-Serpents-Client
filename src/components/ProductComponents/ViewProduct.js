@@ -53,6 +53,7 @@ const ViewProduct = (props) => {
       })
   }
 
+  // {user ? <Link to={`/products/${product._id}`}>More Info</Link> : 'Sign in to ask a question' }
   const stylesOdd = {
     card: {
       backgroundColor: '#303D5B',
@@ -60,7 +61,7 @@ const ViewProduct = (props) => {
       borderRadius: 20,
       padding: '1rem',
       width: '18rem',
-      height: '24rem'
+      height: '18rem'
     },
     cardImage: {
       objectFit: 'cover',
@@ -72,13 +73,18 @@ const ViewProduct = (props) => {
       backgroundColor: '#553885',
       color: '#9B77CE',
       borderRadius: 20,
-      padding: '1rem'
+      padding: '1rem',
+      width: '54rem',
+      height: '36rem'
     },
     cardImage: {
       objectFit: 'cover',
-      borderRadius: 45
+      width: '100%',
+      height: '70%'
     }
   }
+
+  console.log(questions)
 
   return (
     <div>
@@ -86,13 +92,14 @@ const ViewProduct = (props) => {
         <div>
           <div>
             <Card style={stylesEven.card}>
+              <Card.Img variant="top" src={product.image} style={stylesEven.cardImage } />
               <Card.Title>{product.genes}</Card.Title>
               <Card.Text>Price: ${product.price}.00</Card.Text>
               <Card.Text>Age: {product.age}</Card.Text>
               <Card.Text>{product.description}</Card.Text>
-              {user._id === owner ? <Link to={'/product-update/' + product._id}>Update Product</Link> : '' }
-              <Link to={'/create-question/' + product._id}>Ask A Question</Link>
-              {user._id === owner ? <Button onClick={handleDelete}>Delete This Product</Button> : '' }
+              {user ? user._id === owner ? <Link to={'/product-update/' + product._id}>Update Product</Link> : '' : '' }
+              {user ? <Link to={'/create-question/' + product._id}>Ask A Question</Link> : 'Sign in to ask a question' }
+              {user ? user._id === owner ? <Button onClick={handleDelete}>Delete This Product</Button> : '' : '' }
             </Card>
             <CardGroup>
               {questions.map(question => (
@@ -101,7 +108,7 @@ const ViewProduct = (props) => {
                     <Card.Body>
                       <Card.Title>{question.title}</Card.Title>
                       <Card.Text>{question.body}</Card.Text>
-                      {user._id === question.owner ? <Link to={`/question-update/${question._id}`}>Edit Question</Link> : '' }
+                      {user ? user._id === question.owner ? <Link to={`/question-update/${question._id}`}>Edit Question</Link> : '' : '' }
                     </Card.Body>
                   </Card>
                 </div>

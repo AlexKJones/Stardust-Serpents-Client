@@ -95,11 +95,10 @@ class App extends Component {
               msgAlert={this.msgAlert}
             />
           )}/>
-          <AuthenticatedRoute user={user} path='/products/:productId' render={({ match }) => (
+          <Route user={user} exact path='/products/:productId' render={() => (
             <ViewProduct
               user={user}
               msgAlert={this.msgAlert}
-              match={match}
             />
           )}/>
           <AuthenticatedRoute user={user} path='/product-update/:productId' render={({ match, history }) => (

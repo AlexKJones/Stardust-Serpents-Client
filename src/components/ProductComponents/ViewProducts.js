@@ -4,6 +4,7 @@ import { viewProducts } from '../../api/auth'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Spinner from 'react-bootstrap/Spinner'
+import Container from 'react-bootstrap/Container'
 
 import StripeCheckoutButton from '../stripe-button/stripe.button'
 import CardGroup from 'react-bootstrap/CardGroup'
@@ -27,7 +28,7 @@ const ViewProducts = props => {
   const [modalOpen5, setModalOpen5] = useState(false)
   const [modalProduct, setModalProduct] = useState({ product })
 
-  const { user } = props
+  // const { user } = props
 
   useEffect(() => {
     viewProducts()
@@ -64,7 +65,8 @@ const ViewProducts = props => {
     },
     cardImage: {
       objectFit: 'cover',
-      borderRadius: 45
+      width: '100%',
+      height: '40%'
     }
   }
 
@@ -199,23 +201,25 @@ const ViewProducts = props => {
             </Card>
           </div>
         </CardGroup>
-        <CardGroup>
-          {productArray.map(product => (
-            <div key={product._id}>
-              <Card style={stylesEven.card}>
-                <Card.Img variant="top" src={product.image} fluid />
-                <Card.Title>{product.genes}</Card.Title>
-                <Card.Text>Price: ${product.price}.00</Card.Text>
-                <Card.Text>Age: {product.age}</Card.Text>
-                <Button variant="dark" onClick={() => handleShow5(product)}>
-                  More Pictures
-                </Button>
-                <StripeCheckoutButton price={product.price} />
-                {user ? <Link to={`/products/${product._id}`}>More Info</Link> : '' }
-              </Card>
-            </div>
-          ))}
-        </CardGroup>
+        <Container fluid>
+          <CardGroup>
+            {productArray.map(product => (
+              <div key={product._id}>
+                <Card style={stylesEven.card}>
+                  <Card.Img variant="top" src={product.image} style={stylesEven.cardImage } />
+                  <Card.Title>{product.genes}</Card.Title>
+                  <Card.Text>Price: ${product.price}.00</Card.Text>
+                  <Card.Text>Age: {product.age}</Card.Text>
+                  <Button variant="dark" onClick={() => handleShow5(product)}>
+                    More Pictures
+                  </Button>
+                  <StripeCheckoutButton price={product.price + ((product.price * 8.25) / 100)} />
+                  <Link to={`/products/${product._id}`}>More Info</Link>
+                </Card>
+              </div>
+            ))}
+          </CardGroup>
+        </Container>
       </div>
 
     )

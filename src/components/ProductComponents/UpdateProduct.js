@@ -89,6 +89,42 @@ const ProductUpdate = (props) => {
               onChange={handleChange}
             />
           </Form.Group>
+          <Form.Group controlId="image">
+            <Form.Label>Main Image</Form.Label>
+            <Form.Control
+              placeholder="any notes"
+              value={product.image}
+              name="image"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="img1">
+            <Form.Label>Img1</Form.Label>
+            <Form.Control
+              placeholder="Scroll image 1"
+              value={product.img1}
+              name="img1"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="img2">
+            <Form.Label>Img2</Form.Label>
+            <Form.Control
+              placeholder="2nd image"
+              value={product.img2}
+              name="img2"
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="img3">
+            <Form.Label>Img3</Form.Label>
+            <Form.Control
+              placeholder="3rd image"
+              value={product.img3}
+              name="img3"
+              onChange={handleChange}
+            />
+          </Form.Group>
           <Button type="submit">Submit</Button>
           <Link to={'/products'}>
             <Button>Cancel</Button>

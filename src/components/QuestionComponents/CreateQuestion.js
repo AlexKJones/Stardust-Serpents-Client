@@ -46,7 +46,7 @@ const QuestionCreate = props => {
   }
 
   if (createdQuestionId) {
-    return <Redirect to={`/questions/${createdQuestionId}`} />
+    return <Redirect to={`/products/${productId}`} />
   }
 
   return (
@@ -55,11 +55,11 @@ const QuestionCreate = props => {
         <h3>Create Question</h3>
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="title">
-            <Form.Label>Title</Form.Label>
+            <Form.Label>Name</Form.Label>
             <Form.Control
-              placeholder="How is the temperment?"
+              placeholder="Type your name for reference"
               value={question.title}
-              name="title"
+              name="name"
               onChange={handleChange}
             />
           </Form.Group>
