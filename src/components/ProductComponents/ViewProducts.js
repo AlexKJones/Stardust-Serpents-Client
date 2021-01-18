@@ -15,6 +15,7 @@ import MoreInfoModal3 from '../Modals/MoreInfoModal3'
 import MoreInfoModal4 from '../Modals/MoreInfoModal4'
 import MoreInfoModal5 from '../Modals/MoreInfoModal5'
 
+const product = { genes: 'foo', img1: '', img2: '', img3: '' }
 const ViewProducts = props => {
   const [productArray, setProductArray] = useState(null)
   const [modalOpen, setModalOpen] = useState(false)
@@ -24,7 +25,7 @@ const ViewProducts = props => {
   const [modalOpen3, setModalOpen3] = useState(false)
   const [modalOpen4, setModalOpen4] = useState(false)
   const [modalOpen5, setModalOpen5] = useState(false)
-  const [modalProduct, setModalProduct] = useState({ genes: 'foo', img1: 'foo', img2: 'foo', img3: 'foo' })
+  const [modalProduct, setModalProduct] = useState({ product })
 
   const { user } = props
 
@@ -117,6 +118,7 @@ const ViewProducts = props => {
         <MoreInfoModal5
           show={modalOpen5}
           modalProduct={modalProduct}
+          product={product}
           handleClose={handleClose5}
         />
         <CardGroup>
