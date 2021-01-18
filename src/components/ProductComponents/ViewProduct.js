@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button'
 import { viewProduct, deleteProduct } from '../../api/auth'
 import Card from 'react-bootstrap/Card'
 import CardGroup from 'react-bootstrap/CardGroup'
+import StripeCheckoutButton from '../stripe-button/stripe.button'
 
 const ViewProduct = (props) => {
   const [product, setProduct] = useState(null)
@@ -80,7 +81,7 @@ const ViewProduct = (props) => {
     cardImage: {
       objectFit: 'cover',
       width: '100%',
-      height: '70%'
+      height: '60%'
     }
   }
 
@@ -94,9 +95,10 @@ const ViewProduct = (props) => {
             <Card style={stylesEven.card}>
               <Card.Img variant="top" src={product.image} style={stylesEven.cardImage } />
               <Card.Title>{product.genes}</Card.Title>
-              <Card.Text>Price: ${product.price}.00</Card.Text>
+              <Card.Text>Price: ${product.price}.00 plus $60 for shipping and tax</Card.Text>
               <Card.Text>Age: {product.age}</Card.Text>
               <Card.Text>{product.description}</Card.Text>
+              <StripeCheckoutButton price={product.price + 60 + ((product.price * 8.25) / 100)} />
               {user ? user._id === owner ? <Link to={'/product-update/' + product._id}>Update Product</Link> : '' : '' }
               {user ? <Link to={'/create-question/' + product._id}>Ask A Question</Link> : 'Sign in to ask a question' }
               {user ? user._id === owner ? <Button onClick={handleDelete}>Delete This Product</Button> : '' : '' }
