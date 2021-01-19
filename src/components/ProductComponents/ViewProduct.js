@@ -85,8 +85,6 @@ const ViewProduct = (props) => {
     }
   }
 
-  console.log(questions)
-
   return (
     <div>
       {product && questions ? (
