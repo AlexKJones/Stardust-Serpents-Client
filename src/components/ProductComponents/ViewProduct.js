@@ -89,7 +89,7 @@ const ViewProduct = (props) => {
     <div>
       {product && questions ? (
         <div>
-          <div>
+          <div className="d-flex justify-content-center">
             <Card style={stylesEven.card}>
               <Card.Img variant="top" src={product.image} style={stylesEven.cardImage } />
               <Card.Title>{product.genes}</Card.Title>
@@ -101,7 +101,7 @@ const ViewProduct = (props) => {
               {user ? <Link to={'/create-question/' + product._id}>Ask A Question</Link> : 'Sign in to ask a question' }
               {user ? user._id === owner ? <Button onClick={handleDelete}>Delete This Product</Button> : '' : '' }
             </Card>
-            <CardGroup>
+            <CardGroup className="d-flex justify-content-center">
               {questions.map(question => (
                 <div key={question._id}>
                   <Card style={stylesOdd.card}>

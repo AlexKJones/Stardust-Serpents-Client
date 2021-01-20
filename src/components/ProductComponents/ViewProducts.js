@@ -39,6 +39,9 @@ const ViewProducts = props => {
       objectFit: 'cover',
       width: '100%',
       height: '40%'
+    },
+    conatiner: {
+      display: 'flex'
     }
   }
 
@@ -60,7 +63,7 @@ const ViewProducts = props => {
           handleClose={handleClose5}
         />
         <Container fluid>
-          <CardGroup>
+          <CardGroup className="d-flex justify-content-center">
             {productArray.map(product => (
               <div key={product._id}>
                 <Card style={stylesEven.card}>
