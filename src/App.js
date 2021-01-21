@@ -20,6 +20,10 @@ import ViewProducts from './components/ProductComponents/ViewProducts'
 import CreateQuestion from './components/QuestionComponents/CreateQuestion'
 import UpdateQuestion from './components/QuestionComponents/UpdateQuestion'
 
+// <-------- Info imports ------------->
+import About from './components/AboutComponents/About'
+import AnimalCare from './components/AboutComponents/AnimalCare'
+
 class App extends Component {
   constructor () {
     super()
@@ -68,6 +72,10 @@ class App extends Component {
           )} />
           <Route path='/sign-in' render={() => (
             <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
+          )} /><Route path='/about' render={() => (
+            <About msgAlert={this.msgAlert} setUser={this.setUser} />
+          )} /><Route path='/animal-care' render={() => (
+            <AnimalCare msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
