@@ -16,13 +16,13 @@ const About = props => {
       borderRadius: 20,
       padding: '1rem',
       width: '100%',
-      height: '50%',
+      height: '80%',
       margin: 10
     },
     cardImage: {
       objectFit: 'cover',
       width: '100%',
-      height: '40%'
+      height: '60%'
     },
     conatiner: {
       display: 'flex'
@@ -35,7 +35,7 @@ const About = props => {
         <CardGroup className="d-flex justify-content-center">
           <div>
             <Card style={stylesEven.card}>
-              <Card.Img variant="top" src='https://i.imgur.com/MXFEkoG.jpg' style={stylesEven.cardImage } />
+              <Card.Img variant="top" src='https://i.imgur.com/MXFEkoG.jpg?1' style={stylesEven.cardImage } />
               <Card.Title>Stardust Serpents</Card.Title>
               <Card.Text>We are a couple of reptile breeders just outside of the Dallas area.</Card.Text>
               <Link to={'/products/'}>Back to Snakes</Link>

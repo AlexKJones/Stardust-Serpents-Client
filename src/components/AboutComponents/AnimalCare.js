@@ -16,13 +16,13 @@ const AnimalCare = props => {
       borderRadius: 20,
       padding: '1rem',
       width: '100%',
-      height: '50%',
+      height: '100%',
       margin: 10
     },
     cardImage: {
       objectFit: 'cover',
       width: '100%',
-      height: '40%'
+      height: '60%'
     },
     conatiner: {
       display: 'flex'
@@ -35,9 +35,16 @@ const AnimalCare = props => {
         <CardGroup className="d-flex justify-content-center">
           <div>
             <Card style={stylesEven.card}>
-              <Card.Img variant="top" src='https://i.imgur.com/MXFEkoG.jpg' style={stylesEven.cardImage } />
-              <Card.Title>Stardust Serpents</Card.Title>
-              <Card.Text>We are a couple of reptile breeders just outside of the Dallas area.</Card.Text>
+              <Card.Title>Animal Care</Card.Title>
+              <Card.Text>This area is under construction! Here is a few basic resources for now.</Card.Text>
+              <div>
+                <iframe src='https://www.youtube.com/embed/rNpljc5aH1k'
+                  frameBorder='0'
+                  allow='autoplay; encrypted-media'
+                  allowFullScreen
+                  title='video'
+                />
+              </div>
               <Link to={'/products/'}>Back to Snakes</Link>
             </Card>
           </div>
