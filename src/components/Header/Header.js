@@ -24,7 +24,8 @@ const unauthenticatedOptions = (
 
 const alwaysOptions = (
   <Fragment>
-    <Nav.Link href="#/products">View Products</Nav.Link>
+    <Nav.Link href="#/products">Reptiles</Nav.Link>
+    <Nav.Link href="#/merch">Merch</Nav.Link>
     <Nav.Link href="#/animal-care">Animal Care</Nav.Link>
     <Nav.Link href="#/about">About Us</Nav.Link>
   </Fragment>

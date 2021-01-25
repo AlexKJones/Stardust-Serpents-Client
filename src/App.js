@@ -23,6 +23,7 @@ import UpdateQuestion from './components/QuestionComponents/UpdateQuestion'
 // <-------- Info imports ------------->
 import About from './components/AboutComponents/About'
 import AnimalCare from './components/AboutComponents/AnimalCare'
+import Merch from './components/AboutComponents/Merch'
 
 class App extends Component {
   constructor () {
@@ -72,9 +73,14 @@ class App extends Component {
           )} />
           <Route path='/sign-in' render={() => (
             <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
-          )} /><Route path='/about' render={() => (
+          )} />
+          <Route path='/about' render={() => (
             <About msgAlert={this.msgAlert} setUser={this.setUser} />
-          )} /><Route path='/animal-care' render={() => (
+          )} />
+          <Route path='/merch' render={() => (
+            <Merch msgAlert={this.msgAlert} setUser={this.setUser} />
+          )} />
+          <Route path='/animal-care' render={() => (
             <AnimalCare msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
