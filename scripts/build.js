@@ -12,19 +12,20 @@ process.on('unhandledRejection', err => {
 })
 
 // Ensure environment variables are read.
-require('../config/env')
+import('../config/env')
 
-const path = require('path')
-const chalk = require('chalk')
-const fs = require('fs-extra')
-const webpack = require('webpack')
-const config = require('../config/webpack.config.prod')
-const paths = require('../config/paths')
-const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles')
-const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages')
-const printHostingInstructions = require('react-dev-utils/printHostingInstructions')
-const FileSizeReporter = require('react-dev-utils/FileSizeReporter')
-const printBuildError = require('react-dev-utils/printBuildError')
+const path = import('path')
+import chalk from 'chalk'
+//const chalk = import('chalk')
+const fs = import('fs-extra')
+const webpack = import('webpack')
+const config = import('../config/webpack.config.prod')
+const paths = import('../config/paths')
+const checkimportdFiles = import('react-dev-utils/checkimportdFiles')
+const formatWebpackMessages = import('react-dev-utils/formatWebpackMessages')
+const printHostingInstructions = import('react-dev-utils/printHostingInstructions')
+const FileSizeReporter = import('react-dev-utils/FileSizeReporter')
+const printBuildError = import('react-dev-utils/printBuildError')
 
 const measureFileSizesBeforeBuild =
   FileSizeReporter.measureFileSizesBeforeBuild
@@ -35,8 +36,8 @@ const useYarn = fs.existsSync(paths.yarnLockFile)
 const WARN_AFTER_BUNDLE_GZIP_SIZE = 512 * 1024
 const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024
 
-// Warn and crash if required files are missing
-if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
+// Warn and crash if importd files are missing
+if (!checkimportdFiles([paths.appHtml, paths.appIndexJs])) {
   process.exit(1)
 }
 
@@ -81,7 +82,7 @@ measureFileSizesBeforeBuild(paths.appBuild)
       )
       console.log()
 
-      const appPackage = require(paths.appPackageJson)
+      const appPackage = import(paths.appPackageJson)
       const publicUrl = paths.publicUrl
       const publicPath = config.output.publicPath
       const buildFolder = path.relative(process.cwd(), paths.appBuild)

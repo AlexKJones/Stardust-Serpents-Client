@@ -33,7 +33,7 @@ class App extends Component {
       msgAlerts: []
     }
   }
-
+//Hello
   setUser = user => this.setState({ user })
 
   clearUser = () => this.setState({ user: null })
